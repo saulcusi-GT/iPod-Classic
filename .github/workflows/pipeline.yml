@@ -1,0 +1,28 @@
+
+name: Docker Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  docker-job:
+    name: Construir imagen Docker
+    runs-on: self-hosted
+
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Mostrar fecha y hora
+        run: echo "Fecha y hora: $(date)"
+
+      - name: Verificar Docker
+        run: docker --version
+
+      - name: Construir imagen
+        run: docker build -t ipod-classic:1.0 .
+
+      - name: Verificar imagen
+        run: docker image inspect ipod-classic:1.0
