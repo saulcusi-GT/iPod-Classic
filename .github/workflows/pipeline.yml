@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Mostrar fecha y hora
-        run: echo "Fecha y hora: $(date)"
+        run: date
 
       - name: Verificar Docker
         run: docker --version
